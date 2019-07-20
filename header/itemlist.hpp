@@ -1,0 +1,10 @@
+#pragma once
+#include "rh.hpp"
+#include "ba.hpp"
+#include "bd.hpp"
+#include "ph.hpp"
+#include "wa.hpp"
+#include "wd.hpp"
+#include "normalgold.hpp"
+#include "smallgold.hpp"
+#include "dragongold.hpp"

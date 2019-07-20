@@ -1,0 +1,6 @@
+#include "wall.hpp"
+#include "tile.hpp"
+#include "drawenemy.hpp"
+#include "drawplayer.hpp"
+#include "drawpotion.hpp"
+#include "drawgold.hpp"

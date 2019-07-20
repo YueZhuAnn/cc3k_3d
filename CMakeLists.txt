@@ -1,0 +1,48 @@
+cmake_minimum_required(VERSION 2.8)
+
+PROJECT(cc3k_3d)
+
+set(CMAKE_CXX_STANDARD 14)
+
+#include head file
+INCLUDE_DIRECTORIES(
+    header
+    header/draw
+    header/character
+    header/item
+    header/imgui)
+
+#include source code
+AUX_SOURCE_DIRECTORY(src GAME_SRCS)
+AUX_SOURCE_DIRECTORY(src/draw DRAW_SRCS)
+AUX_SOURCE_DIRECTORY(src/character CHARA_SRCS)
+AUX_SOURCE_DIRECTORY(src/item ITEM_SRCS)
+AUX_SOURCE_DIRECTORY(src/imgui IMGUI_SRCS)
+LIST (APPEND DIR_SRCS
+    ${GAME_SRCS}
+    ${DRAW_SRCS}
+    ${CHARA_SRCS}
+    ${ITEM_SRCS}
+    ${IMGUI_SRCS})
+
+#add definition
+add_compile_definitions( DEBUG_INFO=TRUE )
+
+ADD_EXECUTABLE(${PROJECT_NAME} ${DIR_SRCS})
+
+#find libraries
+FIND_PACKAGE(glfw3 3.3 REQUIRED)
+FIND_PACKAGE(OpenGL 3.3 REQUIRED)
+FIND_PACKAGE(glm REQUIRED)
+
+#link glfw
+TARGET_LINK_LIBRARIES(${PROJECT_NAME} glfw) 
+
+#link glm
+TARGET_LINK_LIBRARIES(${PROJECT_NAME} glm) 
+
+#link opengl
+TARGET_INCLUDE_DIRECTORIES(${PROJECT_NAME} PUBLIC ${OPENGL_INCLUDE_DIR})
+TARGET_LINK_LIBRARIES(${PROJECT_NAME} ${OPENGL_gl_LIBRARY})
+
+
